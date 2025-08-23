@@ -1,0 +1,55 @@
+openapi: 3.1.0
+info:
+  title: OAS
+  description: Exercice3 OAS
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8000'
+paths:
+  /tasks:
+    get:
+      summary: Récupère une liste des taches
+      responses:
+        '200':
+          description: Liste des taches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+    post:
+      summary: Ajoute une nouvelle tache
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Task'
+      responses:
+        '201':
+          description: Liste de tache crée
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: laver la vaisselle
+        completed:
+          type: boolean
+          example: false
+
+  

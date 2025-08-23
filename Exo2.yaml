@@ -4,10 +4,11 @@ info:
   description: Exercica2 OAS
   version: 1.0.0
 servers:
-  - url: 'https'
+  - url: 'http://localhost:8000'
 paths:
   /users:
     get:
+      summary: Récupère une liste d'utilisateur
       parameters:
         - name: page
           in: query

@@ -8,6 +8,7 @@ servers:
 paths:
   /ping:
     get:
+      summary: Doit renvoyer pong
       responses:
         '200':
           description: Réponse OK
