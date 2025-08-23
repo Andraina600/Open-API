@@ -16,6 +16,51 @@ paths:
               schema:
                 type: string
                 example: "pong"
+  /users:
+    get:
+      parameters:
+        - name: page
+          in: query
+          required: true
+          description: Numéro de la page
+          schema:
+            type: integer
+        - name: size
+          in: query
+          required: true
+          description: Nombre d'utilisateur
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '200':
+          description: Liste des utilisateus
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      example: 1
+                    name:
+                      type: string
+                      example: Andraina
+                    email:
+                      type: string
+                      format: email
+                      example: andraina@gmail.com
+        '400':
+          description: Mauvais type de parametres
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type: string
+                  example: Bad type for provided query parameters
 
 
 
