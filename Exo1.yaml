@@ -1,0 +1,22 @@
+openapi: 3.1.0
+info:
+  title: OAS
+  description: Exercice1 OAS
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8000'
+paths:
+  /ping:
+    get:
+      responses:
+        '200':
+          description: Réponse OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "pong"
+
+
+
+  
