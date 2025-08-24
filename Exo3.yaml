@@ -37,6 +37,28 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
+    delete:
+      summary: Supprime les taches
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: integer
+                example: 1
+      responses:
+        '200':
+          description: Liste des taches supprimer
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+
+
 components:
   schemas:
     Task:
