@@ -57,8 +57,32 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Task'
-
-
+  /tasks/{id}:
+    get:
+      summary: Récupère les taches avec son id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Tache trouver
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Tache non trouver
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Tache non trouver
 components:
   schemas:
     Task:
