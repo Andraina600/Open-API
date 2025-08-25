@@ -83,6 +83,21 @@ paths:
                   error:
                     type: string
                     example: Tache non trouver
+    delete:
+      summary: Supprime une tache par son id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Tache supprimer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
 components:
   schemas:
     Task:
