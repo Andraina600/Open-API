@@ -6,4 +6,72 @@ info:
 servers:
   - url: 'http://localhost:8000'
 paths:
-  
+  /product:
+    get:
+      summary: Recherche de produit
+      parameters:
+        - $ref: '#/components/parameters/LimitParam'
+        - $ref: '#/components/parameters/QParam'
+      responses:
+        '200':
+          description: Liste des produits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+              example:
+                multipleProducts:
+                  summary: Exemple avec des produit multiple
+                  value:
+                    - id: 1
+                      name: "Chaise"
+                      expiration_datetime: "2030-12-28T19:15:35Z"
+                      price: 19.92
+                    - id: 2
+                      name: "Table"
+                      expiration_datetime: "2030-12-28T19:15:35Z"
+                      price: 80.50
+                emptyList:
+                  summary: Exemple avec un resultat vide
+                  value: []
+
+components:
+  parameters:
+    LimitParam:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+      description: Nombre maximum d'éléments à retouner
+      example: 10
+    QParam:
+      name: q
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Terme de recherche
+      example: chaise
+
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: chaise
+        expiration_datetime:
+          type: string
+          example: 2025-08-30T20:10:50Z
+        price:
+          type: number
+          format: float
+          example: 19.92
+
